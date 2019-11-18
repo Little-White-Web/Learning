@@ -4,7 +4,7 @@ public:
     void display();
     Matrix operator+(Matrix a);
 private:
-    float m[2][3];		//矩阵（二维数组）
-	int h;				//行数
-	int l;				//列数
+    float m[2][3];		//鐭╅樀锛堜簩缁存暟缁勶級
+    int h;		        //琛屾暟
+    int l;			//鍒楁暟
 };
