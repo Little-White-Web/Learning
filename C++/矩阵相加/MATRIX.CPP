@@ -3,11 +3,11 @@
 using namespace std;
 
 Matrix::Matrix(){
-	h=sizeof(m)/sizeof(m[0]);			//»ñÈ¡¾ØÕóĞĞÊı
-	l=sizeof(m[0])/sizeof(m[0][0]);		//»ñÈ¡¾ØÕóÁĞÊı
-    for(int i=0;i<h;i++){
+	h=sizeof(m)/sizeof(m[0]);			//è·å–çŸ©é˜µè¡Œæ•°
+	l=sizeof(m[0])/sizeof(m[0][0]);		//è·å–çŸ©é˜µåˆ—æ•°
+        for(int i=0;i<h;i++){
 		for(int j=0;j<l;j++){
-			m[i][j]=rand()%100;			//rand()º¯ÊıËæ»úÈ¡0µ½99µÄÕûÊı
+			m[i][j]=rand()%100;			//rand()å‡½æ•°éšæœºå–0åˆ°99çš„æ•´æ•°
 		}
 	}
 }
