@@ -4,32 +4,30 @@ using namespace std;
 
 int main(){
 	HString S1,S2;
-	InitStr(S1);InitStr(S2);						//³õÊ¼»¯S1£¬S2
-	StrAssign(S1,"ABCDEFG");StrAssign(S2,"CDE");	//S1£¬S2¸³Öµ
-	printf("S1=");StrDisplay(S1);					//´òÓ¡S1
-	printf("S2=");StrDisplay(S2);					//´òÓ¡S2
-	printf("len(S1)=%d\n",StrLength(S1));			//´òÓ¡S1³¤¶È
-	printf("len(S2)=%d\n",StrLength(S2));			//´òÓ¡S2³¤¶È
+	InitStr(S1);InitStr(S2);						//åˆå§‹åŒ–S1ï¼ŒS2
+	StrAssign(S1,"ABCDEFG");StrAssign(S2,"CDE");	//S1ï¼ŒS2èµ‹å€¼
+	printf("S1=");StrDisplay(S1);					//æ‰“å°S1
+	printf("S2=");StrDisplay(S2);					//æ‰“å°S2
+	printf("len(S1)=%d\n",StrLength(S1));			//æ‰“å°S1é•¿åº¦
+	printf("len(S2)=%d\n",StrLength(S2));			//æ‰“å°S2é•¿åº¦
 
-	if(StrCompare(S1,S2)<0) printf("S1<S2\n");		//±È½ÏS1£¬S2
+	if(StrCompare(S1,S2)<0) printf("S1<S2\n");		//æ¯”è¾ƒS1ï¼ŒS2
 	else if(StrCompare(S1,S2)>0) printf("S1>S2\n");
 	else printf("S1=S2\n");
 
-	if(index(S1,S2,1)!=-1)							//µ÷ÓÃÄ£Ê½Æ¥ÅäËã·¨
-    printf("S2Æ¥ÅäÓÚS1,´ÓÏÂ±ê%d¿ªÊ¼,³¤¶È%d\n",index(S1,S2,1),StrLength(S2));
-    else printf("S2²»Æ¥ÅäÓÚS1!\n");
+	if(index(S1,S2,1)!=-1) printf("S2åŒ¹é…äºS1,ä»ä¸‹æ ‡%då¼€å§‹,é•¿åº¦%d\n",index(S1,S2,1),StrLength(S2));
+        else printf("S2ä¸åŒ¹é…äºS1!\n");                          //è°ƒç”¨åŒ¹é…ç®—æ³•
 
-	int next[225];									//nextÊı×é
-    get_next(S2,next);								//»ñµÃS2µÄnextÊı×é
-    if(KMP(S1,S2,1,next)!=-1)						//µ÷ÓÃKMPËã·¨
-    printf("S2Æ¥ÅäÓÚS1,´ÓÏÂ±ê%d¿ªÊ¼,³¤¶È%d\n",KMP(S1,S2,1,next),StrLength(S2));
-    else printf("S2²»Æ¥ÅäÓÚS1!\n");
+	int next[225];									//nextæ•°ç»„
+        get_next(S2,next);								//è·å¾—S2çš„nextæ•°ç»„
+        if(KMP(S1,S2,1,next)!=-1) printf("S2åŒ¹é…äºS1,ä»ä¸‹æ ‡%då¼€å§‹,é•¿åº¦%d\n",KMP(S1,S2,1,next),StrLength(S2));
+        else printf("S2ä¸åŒ¹é…äºS1!\n");                         //è°ƒç”¨KMPç®—æ³•
 
-	printf("Çå¿Õºó:\n");
-	ClearString(S1);ClearString(S2);				//Çå¿ÕS1£¬S2
-	printf("S1=");StrDisplay(S1);					/*    ´òÓ¡    */
-	printf("S2=");StrDisplay(S2);					/*   S1£¬S2   */
-	printf("len(S1)=%d\n",StrLength(S1));			/*    ¼°Æä    */
-	printf("len(S2)=%d\n",StrLength(S2));			/*    ³¤¶È    */
+	printf("æ¸…ç©ºå:\n");
+	ClearString(S1);ClearString(S2);				//æ¸…ç©ºS1ï¼ŒS2
+	printf("S1=");StrDisplay(S1);					/*    æ‰“å°    */
+	printf("S2=");StrDisplay(S2);					/*   S1ï¼ŒS2   */
+	printf("len(S1)=%d\n",StrLength(S1));			        /*    åŠå…¶    */
+	printf("len(S2)=%d\n",StrLength(S2));			        /*    é•¿åº¦    */
 	return OK;
 }
