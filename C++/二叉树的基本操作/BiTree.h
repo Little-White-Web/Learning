@@ -5,10 +5,10 @@
 
 typedef struct BiTNode{
 	int data;
-	struct BiTNode *lchild, *rchild;	//×óÓÒº¢×ÓÖ¸Õë
+	struct BiTNode *lchild, *rchild;	//å·¦å³å­©å­æŒ‡é’ˆ
 }BiTNode, *BiTree;
 
-int CreateBiTree(Bitree &T);			//²Ù×÷
+int CreateBiTree(Bitree &T);			//æ“ä½œå‡½æ•°çš„å£°æ˜
 int PreOrderTraverse(BiTree T,int (*Visit)(int e));
 int InOrderTraverse(BiTree T,int (*Visit)(int e));
 int PrintElement(int e);
