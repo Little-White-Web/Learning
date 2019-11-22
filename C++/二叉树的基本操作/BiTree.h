@@ -11,4 +11,7 @@ typedef struct BiTNode{
 int CreateBiTree(BiTree &T);			//二叉树操作函数声明
 int PreOrderTraverse(BiTree T,int (*Visit)(char e));
 int InOrderTraverse(BiTree T,int (*Visit)(char e));
+int PostOrderTraverse(BiTree T,int (*Visit)(char e));
+int TreeDeep(BiTree T);
+int LeafCount(BiTree T);
 int PrintElement(char e);
