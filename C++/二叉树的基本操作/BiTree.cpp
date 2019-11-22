@@ -2,24 +2,26 @@
 #include "BiTree.h"
 using namespace std;
 
-int CreateBiTree(Bitree &T){		//°´ÏÈĞò¹¹Ôì¶ş²æÊ÷
-	int d;
-	scanf("%d",&d);
-	if(!d) T=NULL;
+int CreateBiTree(BiTree &T){		//æŒ‰å…ˆåºæ„é€ äºŒå‰æ ‘
+	char ch;
+	printf("è¯·è¾“å…¥æ•°æ®ï¼š");
+	scanf("%c",&ch);
+	getchar();				//æŠµæ¶ˆå›è½¦ç¬¦
+	if(ch=='*') T=NULL;
 	else{
 		if( !(T=(BiTree)malloc(sizeof(BiTNode))) ) exit(FALSE);
-		T->data=d;					//Éú³É¸ù½Úµã
-		CreateBiTree(T->lchild);	//¹¹Ôì×ó×ÓÊ÷
-		CreateBiTree(T->rchild);	//¹¹ÔìÓÒ×ÓÊ÷
+		T->data=ch;					//ç”Ÿæˆæ ¹èŠ‚ç‚¹
+		CreateBiTree(T->lchild);	//æ„é€ å·¦å­æ ‘
+		CreateBiTree(T->rchild);	//æ„é€ å³å­æ ‘
 	}
-	retrun OK;
+	return OK;
 }
 
-int PreOrderTraverse(BiTree T,int (*Visit)(int e)){		//ÏÈĞò±éÀú
+int PreOrderTraverse(BiTree T,int (*Visit)(char e)){		//å…ˆåºéå†
 	if(T){
-		if(Visit(T->data)){
-			if(PreOrderTraverse(T->lchild)){
-				if(PreOrderTraverse(T->rchild)) return OK;
+		if(Visit(T->data)){			//è®¿é—®æ ¹èŠ‚ç‚¹
+			if(PreOrderTraverse(T->lchild,Visit)){		//éå†å·¦å­æ ‘
+				if(PreOrderTraverse(T->rchild,Visit)) return OK;	//éå†å³å­æ ‘
 			}
 		}
 		return ERROR;
@@ -27,21 +29,18 @@ int PreOrderTraverse(BiTree T,int (*Visit)(int e)){		//ÏÈĞò±éÀú
 	else return OK;
 }
 
-int InOrderTraverse(BiTree T,int (*Visit)(int e)){		//ÖĞĞò±éÀú
-	InitStack();Push(S,T);		//¸ùÖ¸Õë½øÕ»
-	while(!StackEmpty(S)){
-		while(GetTop(S,p) && p) Push(S,p->lchild);		//Ïò×ó×ßµ½¾¡Í·
-		Pop(S,p);				//¿ÕÖ¸ÕëÍËÕ»
-		if(!StackEmpty(S)){				//·ÃÎÊ½Úµã£¬ÏòÓÒÒ»²½
-			Pop(S,p);
-			if(!Visit(P->data)) return ERROR;
-			Push(S,p->rchild);
+int InOrderTraverse(BiTree T,int (*Visit)(char e)){		//ä¸­åºéå†
+	if(T){
+		if(InOrderTraverse(T->lchild,Visit)){	//éå†å·¦å­æ ‘
+			if(Visit(T->data)){					//è®¿é—®æ ¹èŠ‚ç‚¹
+				if(InOrderTraverse(T->rchild,Visit)) return OK;	//éå†å³å­æ ‘
+			}
 		}
 	}
 	return OK;
 }
 
-int PrintElement(int e){
-	print("%d\t",e);
+int PrintElement(char e){			//æ‰“å°å…ƒç´ 
+	printf("%c\t",e);
 	return OK;
 }
