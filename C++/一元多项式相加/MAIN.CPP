@@ -2,24 +2,24 @@
 #include "Polyn.h"
 using namespace std;
 
-int main(){										//Ö÷º¯Êı²âÊÔ
+int main(){				//ä¸»å‡½æ•°æµ‹è¯•
 	List A,B,C;
-	printf("³õÊ¼»¯¶àÏîÊ½A£º\n");
+	printf("åˆå§‹åŒ–å¤šé¡¹å¼Aï¼š\n");
 	CreatPolyn(A);
-	printf("³õÊ¼»¯¶àÏîÊ½B£º\n");
+	printf("åˆå§‹åŒ–å¤šé¡¹å¼Bï¼š\n");
 	CreatPolyn(B);
-	printf("³õÊ¼»¯¶àÏîÊ½C£º\n");
-	CreatPolyn(C);								//CÓÃÀ´±íÊ¾A+B£¬ËùÒÔÒª³õÊ¼»¯³ÉÖ»ÓĞ0Ïî
+	printf("åˆå§‹åŒ–å¤šé¡¹å¼Cï¼š\n");
+	CreatPolyn(C);			//Cç”¨æ¥è¡¨ç¤ºA+Bï¼Œæ‰€ä»¥è¦åˆå§‹åŒ–æˆåªæœ‰0é¡¹
 
-	printf("¶àÏîÊ½A£º\n");
-	PrintPolyn(A);								//Õ¹Ê¾¶àÏîÊ½A¡¢B
-	printf("¶àÏîÊ½B£º\n");
+	printf("å¤šé¡¹å¼Aï¼š\n");
+	PrintPolyn(A);			//å±•ç¤ºå¤šé¡¹å¼Aã€B
+	printf("å¤šé¡¹å¼Bï¼š\n");
 	PrintPolyn(B);
 	
-	printf("Ïà¼ÓÇ°¶àÏîÊ½C£º\n");
-	PrintPolyn(C);								//Õ¹Ê¾¶àÏîÊ½C	
-	AddPolyn(A,B,C);							//¶àÏîÊ½A¡¢BÏà¼Óµ½C	
-	printf("Ïà¼Óºó¶àÏîÊ½C£º\n");
-	PrintPolyn(C);								//ÔÙ´ÎÕ¹Ê¾C
+	printf("ç›¸åŠ å‰å¤šé¡¹å¼Cï¼š\n");
+	PrintPolyn(C);			//å±•ç¤ºå¤šé¡¹å¼C	
+	AddPolyn(A,B,C);		//å¤šé¡¹å¼Aã€Bç›¸åŠ åˆ°C	
+	printf("ç›¸åŠ åå¤šé¡¹å¼Cï¼š\n");
+	PrintPolyn(C);			//å†æ¬¡å±•ç¤ºC
 	return OK;
 }
