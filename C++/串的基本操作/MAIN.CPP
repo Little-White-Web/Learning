@@ -16,12 +16,12 @@ int main(){
 	else printf("S1=S2\n");
 
 	if(index(S1,S2,1)!=-1) printf("S2匹配于S1,从下标%d开始,长度%d\n",index(S1,S2,1),StrLength(S2));
-        else printf("S2不匹配于S1!\n");		     //调用匹配算法
+        else printf("S2不匹配于S1!\n");		//调用匹配算法
 
 	int next[225];					//next数组
         get_next(S2,next);				//获得S2的next数组
         if(KMP(S1,S2,1,next)!=-1) printf("S2匹配于S1,从下标%d开始,长度%d\n",KMP(S1,S2,1,next),StrLength(S2));
-        else printf("S2不匹配于S1!\n");		     //调用KMP算法
+        else printf("S2不匹配于S1!\n");		//调用KMP算法
 
 	printf("清空后:\n");
 	ClearString(S1);ClearString(S2);		//清空S1，S2
