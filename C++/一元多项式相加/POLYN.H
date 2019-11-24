@@ -3,9 +3,9 @@
 #define OK 1
 #define ERROR -1
 
-typedef struct Polyn{							//¶àÏîÊ½Á´±í½á¹¹
-	float coef;									//ÏµÊı
-	int expn;									//Ö¸Êı
+typedef struct Polyn{			//å¤šé¡¹å¼é“¾è¡¨ç»“æ„
+	float coef;			//ç³»æ•°
+	int expn;			//æŒ‡æ•°
 	struct Polyn * next;
 }Polyn, *List;
 
