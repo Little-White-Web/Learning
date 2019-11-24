@@ -2,13 +2,13 @@
 #include "Sting.h"
 using namespace std;
 
-int InitStr(HString &S){		//³õÊ¼»¯
+int InitStr(HString &S){		//åˆå§‹åŒ–
 	S.ch=(char*)malloc(sizeof(char));
 	S.length=0;
 	return OK;
 }
 
-int StrAssign(HString &T,char * chars){		//¸³Öµ
+int StrAssign(HString &T,char * chars){	//èµ‹å€¼
 	if(T.ch) free(T.ch);
 	int i;char * c;
 	for(i=0,c=chars;*c;++i,++c);
@@ -24,18 +24,18 @@ int StrAssign(HString &T,char * chars){		//¸³Öµ
 	return OK;
 }
 
-int StrLength(HString S){		//´®³¤
+int StrLength(HString S){		//ä¸²é•¿
 	return S.length;
 }
 
-int StrCompare(HString S,HString T){	 //±È½Ï´óĞ¡
+int StrCompare(HString S,HString T){	//æ¯”è¾ƒå¤§å°
 	for(int i=0;i<S.length && i<T.length;++i){
 		if(S.ch[i] != T.ch[i]) return S.ch[i]-T.ch[i];
 	}
 	return S.length-T.length;
 }
 
-int ClearString(HString &S){		//Çå¿Õ´®
+int ClearString(HString &S){		//æ¸…ç©ºä¸²
 	if(S.ch){
 		free(S.ch);
 		S.ch=NULL;
@@ -44,7 +44,7 @@ int ClearString(HString &S){		//Çå¿Õ´®
 	return OK;
 }
 
-int StrDisplay(HString S){			//´òÓ¡´®
+int StrDisplay(HString S){		//æ‰“å°ä¸²
     int len=StrLength(S);
 	if(len==0){
 		printf("NULL\n");
@@ -57,7 +57,7 @@ int StrDisplay(HString S){			//´òÓ¡´®
     return OK;
 }
 
-int index(HString S,HString T,int pos){		//Ä£Ê½Æ¥ÅäËã·¨
+int index(HString S,HString T,int pos){	//æ¨¡å¼åŒ¹é…ç®—æ³•
     int i=pos,j=1;
     while(i<=StrLength(S) && j<=StrLength(T)){
         if(S.ch[i-1]==T.ch[j-1]){i++;j++;}
@@ -67,7 +67,7 @@ int index(HString S,HString T,int pos){		//Ä£Ê½Æ¥ÅäËã·¨
     else return -1;
 }
 
-void get_next(HString S,int *next){			//ÇónextÊı×é
+void get_next(HString S,int *next){	//æ±‚nextæ•°ç»„
     int i=1,j=0;next[1]=0;
     while(i<StrLength(S)){
         if(j==0 || S.ch[i-1]==S.ch[j-1]){
@@ -78,7 +78,7 @@ void get_next(HString S,int *next){			//ÇónextÊı×é
     }
 }
 
-int KMP(HString S,HString T,int pos,int *next){		//KMPËã·¨
+int KMP(HString S,HString T,int pos,int *next){//KMPç®—æ³•
     int i=pos,j=1;
     while(i<=StrLength(S) && j<=StrLength(T)){
         if(j==0 || S.ch[i-1]==T.ch[j-1]){
