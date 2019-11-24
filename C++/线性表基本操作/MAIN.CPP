@@ -3,48 +3,48 @@
 using namespace std;
 
 int main(){
-	printf("Ë³Ğò±í²Ù×÷:\n");
-	SqList L1,L2,L3;				//¶¨ÒåÈı¸öË³Ğò±í
-	InitList(L1);InitList(L2);		//³õÊ¼»¯L1£¬L2
-	printf("Íê³É³õÊ¼»¯Ë³Ğò±íL1,L2!\n");
+	printf("é¡ºåºè¡¨æ“ä½œ:\n");
+	SqList L1,L2,L3;			//å®šä¹‰ä¸‰ä¸ªé¡ºåºè¡¨
+	InitList(L1);InitList(L2);		//åˆå§‹åŒ–L1ï¼ŒL2
+	printf("å®Œæˆåˆå§‹åŒ–é¡ºåºè¡¨L1,L2!\n");
 	printf("L1:\t");
-	ListDisplay(L1);				//´òÓ¡L1
+	ListDisplay(L1);			//æ‰“å°L1
 	printf("L2:\t");
-	ListDisplay(L2);				//´òÓ¡L2
-	printf("²åÈëÊı¾İ:\n");
-	for(int i=1;i<=5;i++){			//L1£¬L2²åÈë²âÊÔÊı¾İ
+	ListDisplay(L2);			//æ‰“å°L2
+	printf("æ’å…¥æ•°æ®:\n");
+	for(int i=1;i<=5;i++){			//L1ï¼ŒL2æ’å…¥æµ‹è¯•æ•°æ®
 		ListInsert(L1,i,i);
 		ListInsert(L2,i,i+3);
 	}
 	printf("L1:\t");
-	ListDisplay(L1);				//ÔÙ´Î´òÓ¡L1
+	ListDisplay(L1);			//å†æ¬¡æ‰“å°L1
 	printf("L2:\t");
-	ListDisplay(L2);				//ÔÙ´Î´òÓ¡L2
-	MergeList(L1,L2,L3);			//L1£¬L2ºÏ²¢µ½L3
-	printf("Íê³ÉL1ÓëL2ºÏ²¢µ½L3!\n");
+	ListDisplay(L2);			//å†æ¬¡æ‰“å°L2
+	MergeList(L1,L2,L3);			//L1ï¼ŒL2åˆå¹¶åˆ°L3
+	printf("å®ŒæˆL1ä¸L2åˆå¹¶åˆ°L3!\n");
 	printf("L3:\t");
-	ListDisplay(L3);				//´òÓ¡L3
+	ListDisplay(L3);			//æ‰“å°L3
 
-	printf("\nµ¥Á´±í²Ù×÷:\n");
-	LinkList L4,L5,L6;				//¶¨ÒåÈı¸öÁ´±í
-	InitList(L4);InitList(L5);		//³õÊ¼»¯L4£¬L5
-	printf("Íê³É³õÊ¼»¯µ¥Á´±íL4,L5!\n");
+	printf("\nå•é“¾è¡¨æ“ä½œ:\n");
+	LinkList L4,L5,L6;			//å®šä¹‰ä¸‰ä¸ªé“¾è¡¨
+	InitList(L4);InitList(L5);		//åˆå§‹åŒ–L4ï¼ŒL5
+	printf("å®Œæˆåˆå§‹åŒ–å•é“¾è¡¨L4,L5!\n");
 	printf("L4:\t");
-	ListDisplay(L4);				//´òÓ¡L4
+	ListDisplay(L4);			//æ‰“å°L4
 	printf("L5:\t");
-	ListDisplay(L5);				//´òÓ¡L5
-	printf("²åÈëÊı¾İ:\n");
-	for(i=1;i<=5;i++){				//L4£¬L5²åÈë²âÊÔÊı¾İ
+	ListDisplay(L5);			//æ‰“å°L5
+	printf("æ’å…¥æ•°æ®:\n");
+	for(i=1;i<=5;i++){			//L4ï¼ŒL5æ’å…¥æµ‹è¯•æ•°æ®
 		ListInsert(L4,i,i+10);
 		ListInsert(L5,i,i+12);
 	}
 	printf("L4:\t");
-	ListDisplay(L4);				//ÔÙ´Î´òÓ¡L4
+	ListDisplay(L4);			//å†æ¬¡æ‰“å°L4
 	printf("L5:\t");
-	ListDisplay(L5);				//ÔÙ´Î´òÓ¡L5
-	MergeList(L4,L5,L6);			//L4£¬L5ºÏ²¢µ½L6
-	printf("Íê³ÉL4ÓëL5ºÏ²¢µ½L6!\n");
+	ListDisplay(L5);			//å†æ¬¡æ‰“å°L5
+	MergeList(L4,L5,L6);			//L4ï¼ŒL5åˆå¹¶åˆ°L6
+	printf("å®ŒæˆL4ä¸L5åˆå¹¶åˆ°L6!\n");
 	printf("L6:\t");
-	ListDisplay(L6);				//´òÓ¡L6
+	ListDisplay(L6);			//æ‰“å°L6
 	return OK;
 }
