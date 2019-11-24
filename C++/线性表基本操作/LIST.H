@@ -3,18 +3,18 @@
 #define OK 1
 #define ERROR -1
 
-typedef struct LNode{		//Á´±í½á¹¹
+typedef struct LNode{		//é“¾è¡¨ç»“æ„
 	int data;
 	struct LNode * next;
 }LNode, *LinkList;
 
-typedef struct{				//Ë³Ğò±í½á¹¹
+typedef struct{			//é¡ºåºè¡¨ç»“æ„
 	int * data;
 	int length;
 	int listsize;
 }SqList;
 
-int InitList(LinkList &L);	//±íµÄ»ù±¾²Ù×÷£¬ÖØÔØº¯Êı£¬Í¬Ò»¸öº¯ÊıÃû¿ÉÒÔ·Ö±ğ¶ÔÁ½ÖÖ±í²Ù×÷
+int InitList(LinkList &L);	//è¡¨çš„åŸºæœ¬æ“ä½œï¼Œé‡è½½å‡½æ•°ï¼ŒåŒä¸€ä¸ªå‡½æ•°åå¯ä»¥åˆ†åˆ«å¯¹ä¸¤ç§è¡¨æ“ä½œ
 int InitList(SqList &L);
 
 int ListLength(LinkList L);
