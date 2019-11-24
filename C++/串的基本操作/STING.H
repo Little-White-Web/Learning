@@ -3,12 +3,12 @@
 #define OK 1
 #define ERROR -1
 
-typedef struct{			//´®µÄ¶Ñ·ÖÅä´æ´¢±íÊ¾
+typedef struct{			//ä¸²çš„å †åˆ†é…å­˜å‚¨è¡¨ç¤º
 	char* ch;
 	int length;
 }HString;
 
-int InitStr(HString &S);		//´®µÄ²Ù×÷
+int InitStr(HString &S);	//ä¸²çš„æ“ä½œ
 
 int StrAssign(HString &T,char * chars);
 
