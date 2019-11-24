@@ -2,109 +2,109 @@
 #include "Search.h"
 using namespace std;
 
-int CreateSST(SSTable &T){						//´´½¨ÓĞĞò±í
-	printf("´´½¨ÓĞĞò±í£¬ÇëÊäÈë±íµÄ³¤¶È£º");
-	scanf("%d",&T.length);						//ÊäÈë±í³¤
-	T.elem=(int*)malloc(T.length*sizeof(int));	//·ÖÅä¿Õ¼ä
+int CreateSST(SSTable &T){				//åˆ›å»ºæœ‰åºè¡¨
+	printf("åˆ›å»ºæœ‰åºè¡¨ï¼Œè¯·è¾“å…¥è¡¨çš„é•¿åº¦ï¼š");
+	scanf("%d",&T.length);				//è¾“å…¥è¡¨é•¿
+	T.elem=(int*)malloc(T.length*sizeof(int));	//åˆ†é…ç©ºé—´
 	if(!T.elem) exit(FALSE);
-	printf("ÒÀ´ÎÊäÈë%d¸öÓĞĞòÕûÊı£º\n",T.length);
+	printf("ä¾æ¬¡è¾“å…¥%dä¸ªæœ‰åºæ•´æ•°ï¼š\n",T.length);
 	for(int i=0;i<T.length;i++){
-		scanf("%d",&T.elem[i]);					//ÊäÈëÊı¾İ
-		getchar();								//µÖÏû»Ø³µ·û
+		scanf("%d",&T.elem[i]);			//è¾“å…¥æ•°æ®
+		getchar();				//æŠµæ¶ˆå›è½¦ç¬¦
 	}
 	return OK;
 }
 
-int Search_Bin(SSTable T,int key){				//ÕÛ°ë²éÕÒ
-	int low=0,high=T.length-1;					//²éÕÒÇø¼ä
+int Search_Bin(SSTable T,int key){			//æŠ˜åŠæŸ¥æ‰¾
+	int low=0,high=T.length-1;			//æŸ¥æ‰¾åŒºé—´
 	while(low<=high){
-		int mid=(low+high)/2;					//Çø¼äµÄÖĞµã
-		if(T.elem[mid]==key) return mid;		//ÕÒµ½½á¹û£¬·µ»ØÆäÏÂ±ê
-		else if(key<T.elem[mid]) high=mid-1;	//ÔÚÇ°°ëÇø¼ä²éÕÒ
-		else low=mid+1;							//ÔÚºó°ëÇø¼ä²éÕÒ
+		int mid=(low+high)/2;			//åŒºé—´çš„ä¸­ç‚¹
+		if(T.elem[mid]==key) return mid;	//æ‰¾åˆ°ç»“æœï¼Œè¿”å›å…¶ä¸‹æ ‡
+		else if(key<T.elem[mid]) high=mid-1;	//åœ¨å‰åŠåŒºé—´æŸ¥æ‰¾
+		else low=mid+1;				//åœ¨ååŠåŒºé—´æŸ¥æ‰¾
 	}
-	return -1;									//²éÎŞ´ËÔªËØ£¬·µ»Ø-1
+	return -1;					//æŸ¥æ— æ­¤å…ƒç´ ï¼Œè¿”å›-1
 }
 
 //*************************************************************************************
 
-int CreateBST(BiTree &T){						//´´½¨¶ş²æÅÅĞòÊ÷
-	printf("´´½¨¶ş²æÅÅĞòÊ÷£¬ÇëÊäÈëÊı×Ö£¨-1½áÊø£©£º\n");
-	int data;scanf("%d",&data);					//ÊäÈëÊı¾İ
+int CreateBST(BiTree &T){				//åˆ›å»ºäºŒå‰æ’åºæ ‘
+	printf("åˆ›å»ºäºŒå‰æ’åºæ ‘ï¼Œè¯·è¾“å…¥æ•°å­—ï¼ˆ-1ç»“æŸï¼‰ï¼š\n");
+	int data;scanf("%d",&data);			//è¾“å…¥æ•°æ®
 	while(data != -1){
-		getchar();								//µÖÏû»Ø³µ·û
-		Insert(T,data);							//²åÈëÊı¾İµ½Ê÷ÖĞ
-		scanf("%d",&data);						//ÊäÈëÏÂÒ»ÌõÊı¾İ
+		getchar();				//æŠµæ¶ˆå›è½¦ç¬¦
+		Insert(T,data);				//æ’å…¥æ•°æ®åˆ°æ ‘ä¸­
+		scanf("%d",&data);			//è¾“å…¥ä¸‹ä¸€æ¡æ•°æ®
 	}
 	return OK;
 }
 
-BiTree SearchBST(BiTree T,int key){				//ÔÚÅÅĞòÊ÷ÖĞ²éÕÒkey
-	if(!T || T->data==key) return T;			//TÎª¿Õ£¬»òT=key£¬·µ»Ø¸ù½Úµã
+BiTree SearchBST(BiTree T,int key){			//åœ¨æ’åºæ ‘ä¸­æŸ¥æ‰¾key
+	if(!T || T->data==key) return T;		//Tä¸ºç©ºï¼Œæˆ–T=keyï¼Œè¿”å›æ ¹èŠ‚ç‚¹
 	else if(key<T->data)
-		return (SearchBST(T->lchild,key));		//key<T£¬ÔÚ×ó×ÓÊ÷²éÕÒ
+		return (SearchBST(T->lchild,key));	//key<Tï¼Œåœ¨å·¦å­æ ‘æŸ¥æ‰¾
 	else
-		return (SearchBST(T->rchild,key));		//key>T£¬ÔÚÓÒ×ÓÊ÷²éÕÒ
+		return (SearchBST(T->rchild,key));	//key>Tï¼Œåœ¨å³å­æ ‘æŸ¥æ‰¾
 }
 
-int Insert(BiTree &T,int data){					//¶ş²æÅÅĞòÊ÷²åÈë²Ù×÷
-	BiTree p=(BiTree)malloc(sizeof(BiTNode));	//·ÖÅäÒ»¸ö½Úµã
+int Insert(BiTree &T,int data){				//äºŒå‰æ’åºæ ‘æ’å…¥æ“ä½œ
+	BiTree p=(BiTree)malloc(sizeof(BiTNode));	//åˆ†é…ä¸€ä¸ªèŠ‚ç‚¹
 	if(!p) exit(FALSE);
-	p->data=data;								//¸ø¸Ã½Úµã¸³Öµ
-	p->lchild=p->rchild=NULL;					//×óÓÒº¢×ÓÖ¸Õë³õÊ¼»¯NULL
-	if(!T){T=p;return OK;}						//ÈôTÎª¿ÕÊ÷£¬Ôòp×÷ÎªTµÄ¸ù½Úµã
-	if(!(T->lchild) && p->data<T->data){		//ÈôT×ó×ÓÊ÷Îª¿Õ£¬ÇÒp<T£¬Ôòp×÷ÎªTµÄ×ó×ÓÊ÷
+	p->data=data;					//ç»™è¯¥èŠ‚ç‚¹èµ‹å€¼
+	p->lchild=p->rchild=NULL;			//å·¦å³å­©å­æŒ‡é’ˆåˆå§‹åŒ–NULL
+	if(!T){T=p;return OK;}				//è‹¥Tä¸ºç©ºæ ‘ï¼Œåˆ™pä½œä¸ºTçš„æ ¹èŠ‚ç‚¹
+	if(!(T->lchild) && p->data<T->data){		//è‹¥Tå·¦å­æ ‘ä¸ºç©ºï¼Œä¸”p<Tï¼Œåˆ™pä½œä¸ºTçš„å·¦å­æ ‘
 		T->lchild=p;
 		return OK;
 	}
-	if(!(T->rchild) && p->data>T->data){		//ÈôTÓÒ×ÓÊ÷Îª¿Õ£¬ÇÒp>T£¬Ôòp×÷ÎªTµÄÓÒ×ÓÊ÷
+	if(!(T->rchild) && p->data>T->data){		//è‹¥Tå³å­æ ‘ä¸ºç©ºï¼Œä¸”p>Tï¼Œåˆ™pä½œä¸ºTçš„å³å­æ ‘
 		T->rchild=p;
 		return OK;
 	}
-	if(p->data<T->data) Insert(T->lchild,p->data);	//Èô¸ù×óÓÒ¶¼·Ç¿Õ£¬Ôò·Ö±ğÔÚ£¬×óÓÒ×ÓÊ÷µİ¹é
-	if(p->data>T->data) Insert(T->rchild,p->data);	//Ö±µ½ÕÒµ½Ò¶×Ó½Úµã£¬È»ºóÖ´ĞĞÉÏÊö²Ù×÷
+	if(p->data<T->data) Insert(T->lchild,p->data);	//è‹¥æ ¹å·¦å³éƒ½éç©ºï¼Œåˆ™åˆ†åˆ«åœ¨ï¼Œå·¦å³å­æ ‘é€’å½’
+	if(p->data>T->data) Insert(T->rchild,p->data);	//ç›´åˆ°æ‰¾åˆ°å¶å­èŠ‚ç‚¹ï¼Œç„¶åæ‰§è¡Œä¸Šè¿°æ“ä½œ
 	return OK;
 }
 
 //*******************************************************************************************
 
-int CreateHash(HashTable &T){					//´´½¨¹şÏ£±í
-	printf("´´½¨¹şÏ£±í£¬ÇëÊäÈë±íµÄÈİÁ¿£º");
-	scanf("%d",&T.size);						//ÊäÈë±íÈİÁ¿
-	T.elem=(HashData*)malloc(T.size*sizeof(HashData));//·ÖÅä¿Õ¼ä¸ø±íT
-	T.count=0;									//³õÊ¼ÔªËØ¸öÊıÎª0
+int CreateHash(HashTable &T){				//åˆ›å»ºå“ˆå¸Œè¡¨
+	printf("åˆ›å»ºå“ˆå¸Œè¡¨ï¼Œè¯·è¾“å…¥è¡¨çš„å®¹é‡ï¼š");
+	scanf("%d",&T.size);				//è¾“å…¥è¡¨å®¹é‡
+	T.elem=(HashData*)malloc(T.size*sizeof(HashData));//åˆ†é…ç©ºé—´ç»™è¡¨T
+	T.count=0;					//åˆå§‹å…ƒç´ ä¸ªæ•°ä¸º0
 	for(int i=0;i<T.size;i++){
 		T.elem[i].data=0;
-		T.elem[i].state=false;					//³õÊ¼»¯ËùÓĞµ¥ÔªµÄ×´Ì¬ÎªÎŞÖµ
+		T.elem[i].state=false;			//åˆå§‹åŒ–æ‰€æœ‰å•å…ƒçš„çŠ¶æ€ä¸ºæ— å€¼
 	}
-	printf("ÒÀ´ÎÊäÈëÊı¾İ£¨-1½áÊø£©£º\n");
+	printf("ä¾æ¬¡è¾“å…¥æ•°æ®ï¼ˆ-1ç»“æŸï¼‰ï¼š\n");
 	while(T.count<T.size){
-		int data;scanf("%d",&data);				//ÊäÈëÊı¾İ
-		if(data==-1) return OK;					//ÈôÊäÈë-1£¬½áÊøÊäÈë
-		int addr=data%T.size;					//HashµØÖ·
-		while(T.elem[addr].state){				//ÈôµØÖ·³åÍ»
-			addr++;								//µØÖ·¼ÓÒ»
-			if(addr>T.size-1) addr=0;			//ÈôĞÂµØÖ·³¬³ö±íÈİÁ¿£¬Ôò´Ó0ºÅµ¥ÔªÖØĞÂÕÒ
+		int data;scanf("%d",&data);		//è¾“å…¥æ•°æ®
+		if(data==-1) return OK;			//è‹¥è¾“å…¥-1ï¼Œç»“æŸè¾“å…¥
+		int addr=data%T.size;			//Hashåœ°å€
+		while(T.elem[addr].state){		//è‹¥åœ°å€å†²çª
+			addr++;				//åœ°å€åŠ ä¸€
+			if(addr>T.size-1) addr=0;	//è‹¥æ–°åœ°å€è¶…å‡ºè¡¨å®¹é‡ï¼Œåˆ™ä»0å·å•å…ƒé‡æ–°æ‰¾
 		}
-		T.elem[addr].data=data;					//¸ø¸ÃµØÖ·µÄÊı¾İ¸³Öµ
-		T.elem[addr].state=true;				//´æÊı¾İºó¸Ä×´Ì¬ÎªÓĞÖµ
-		T.count++;								//¼ÆÊı¼ÓÒ»
+		T.elem[addr].data=data;			//ç»™è¯¥åœ°å€çš„æ•°æ®èµ‹å€¼
+		T.elem[addr].state=true;		//å­˜æ•°æ®åæ”¹çŠ¶æ€ä¸ºæœ‰å€¼
+		T.count++;				//è®¡æ•°åŠ ä¸€
 	}
 	return OK;
 }
 
-int SearchHash(HashTable T,int key){			//¹şÏ£²éÕÒ
+int SearchHash(HashTable T,int key){			//å“ˆå¸ŒæŸ¥æ‰¾
 	int addr=key%T.size;
-	if(key==T.elem[addr].data) return addr;		//²éÕÒÆ¥Åä£¬·µ»ØµØÖ·
-	addr=NextAddr(T,addr,key);					//²»Æ¥Åä£¬µ÷ÓÃµİ¹é²éÕÒ
-	return addr;								//·µ»Ø×îÖÕµØÖ·£¬²»Ò»¶¨Æ¥Åä
+	if(key==T.elem[addr].data) return addr;		//æŸ¥æ‰¾åŒ¹é…ï¼Œè¿”å›åœ°å€
+	addr=NextAddr(T,addr,key);			//ä¸åŒ¹é…ï¼Œè°ƒç”¨é€’å½’æŸ¥æ‰¾
+	return addr;					//è¿”å›æœ€ç»ˆåœ°å€ï¼Œä¸ä¸€å®šåŒ¹é…
 }
 
-int NextAddr(HashTable T,int addr,int key){		//È¡ÏÂÒ»¸öµØÖ·£¨²éÕÒ²»Æ¥ÅäÊ±Ê¹ÓÃ£©
-	static const int start=addr;				//¼ÇÂ¼³õÊ¼µØÖ·
+int NextAddr(HashTable T,int addr,int key){		//å–ä¸‹ä¸€ä¸ªåœ°å€ï¼ˆæŸ¥æ‰¾ä¸åŒ¹é…æ—¶ä½¿ç”¨ï¼‰
+	static const int start=addr;			//è®°å½•åˆå§‹åœ°å€
 	addr+=1;
-	if(addr>T.size-1) addr=0;					//µØÖ·³¬³öÈİÁ¿£¬´Ó0ºÅµ¥Ôª¿ªÊ¼ÕÒ
-	if(addr==start) return -1;					//ÔÙ´ÎÕÒµ½³õÊ¼µØÖ·£¬ËµÃ÷²éÕÒÊ§°Ü
-	if(key==T.elem[addr].data) return addr;		//²éÕÒÆ¥Åä£¬·µ»Ø¸ÃµØÖ·
-	return NextAddr(T,addr,key);				//µİ¹é²éÕÒ
+	if(addr>T.size-1) addr=0;			//åœ°å€è¶…å‡ºå®¹é‡ï¼Œä»0å·å•å…ƒå¼€å§‹æ‰¾
+	if(addr==start) return -1;			//å†æ¬¡æ‰¾åˆ°åˆå§‹åœ°å€ï¼Œè¯´æ˜æŸ¥æ‰¾å¤±è´¥
+	if(key==T.elem[addr].data) return addr;		//æŸ¥æ‰¾åŒ¹é…ï¼Œè¿”å›è¯¥åœ°å€
+	return NextAddr(T,addr,key);			//é€’å½’æŸ¥æ‰¾
 }
