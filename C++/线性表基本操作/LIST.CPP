@@ -2,7 +2,7 @@
 #include "List.h"
 using namespace std;
 
-int InitList(LinkList &L){			//³õÊ¼»¯¿Õ±í
+int InitList(LinkList &L){		//åˆå§‹åŒ–ç©ºè¡¨
 	L=(LinkList)malloc(sizeof(LNode));
 	if(!L) exit(FALSE);
 	L->data=0;
@@ -10,15 +10,15 @@ int InitList(LinkList &L){			//³õÊ¼»¯¿Õ±í
 	return OK;
 }
 
-int InitList(SqList &L){			//³õÊ¼»¯¿Õ±í
+int InitList(SqList &L){		//åˆå§‹åŒ–ç©ºè¡¨
 	L.data=(int*)malloc(100*sizeof(int));
 	if(!L.data) exit(FALSE);
 	L.length=0;
-	L.listsize=100;					//³õÊ¼´æ´¢ÈİÁ¿
+	L.listsize=100;			//åˆå§‹å­˜å‚¨å®¹é‡
 	return OK;
 }
 
-int ListLength(LinkList L){			//ÇóÁ´±í³¤¶È
+int ListLength(LinkList L){		//æ±‚é“¾è¡¨é•¿åº¦
 	LinkList p=L->next;
 	int length=0;
 	while(p){
@@ -28,7 +28,7 @@ int ListLength(LinkList L){			//ÇóÁ´±í³¤¶È
 	return length;
 }
 
-int ListLength(SqList L){			//ÇóË³Ğò±í³¤¶È
+int ListLength(SqList L){		//æ±‚é¡ºåºè¡¨é•¿åº¦
 	int * p=L.data;
 	int length=0;
 	while(p){
@@ -38,17 +38,17 @@ int ListLength(SqList L){			//ÇóË³Ğò±í³¤¶È
 	return length;
 }
 
-int ListEmpty(LinkList L){			//Á´±íÅĞ¿Õ
+int ListEmpty(LinkList L){		//é“¾è¡¨åˆ¤ç©º
 	if(L->next) return 1;
 	else return -1;
 }
 
-int ListEmpty(SqList L){			//Ë³Ğò±íÅĞ¿Õ
+int ListEmpty(SqList L){		//é¡ºåºè¡¨åˆ¤ç©º
 	if(L.length) return 1;
 	else return -1;
 }
 
-int ListInsert(LinkList &L,int i,int e){		//Á´±í²åÈë²Ù×÷
+int ListInsert(LinkList &L,int i,int e){//é“¾è¡¨æ’å…¥æ“ä½œ
 	LinkList p=L;int j=0;
 	while(p&&j < i-1){
 		p=p->next;
@@ -63,7 +63,7 @@ int ListInsert(LinkList &L,int i,int e){		//Á´±í²åÈë²Ù×÷
 	return OK;
 }
 
-int ListInsert(SqList &L,int i,int e){			//Ë³Ğò±í²åÈë²Ù×÷
+int ListInsert(SqList &L,int i,int e){	//é¡ºåºè¡¨æ’å…¥æ“ä½œ
 	if(i<1 || i>L.length+1) return ERROR;
 	if(L.length>=L.listsize){
 		int* newbase=(int*)realloc(L.data,(L.listsize+10)*sizeof(int));
@@ -78,7 +78,7 @@ int ListInsert(SqList &L,int i,int e){			//Ë³Ğò±í²åÈë²Ù×÷
 	return OK;
 }
 
-int ListDelete(LinkList &L,int i,int &e){		//Á´±íÉ¾³ı²Ù×÷
+int ListDelete(LinkList &L,int i,int &e){		//é“¾è¡¨åˆ é™¤æ“ä½œ
 	LinkList p=L;int j=0;
 	while(p->next && j<i-1){
 		p=p->next;
@@ -92,7 +92,7 @@ int ListDelete(LinkList &L,int i,int &e){		//Á´±íÉ¾³ı²Ù×÷
 	return OK;
 }
 
-int ListDelete(SqList &L,int i,int &e){			//Ë³Ğò±íÉ¾³ı²Ù×÷
+int ListDelete(SqList &L,int i,int &e){			//é¡ºåºè¡¨åˆ é™¤æ“ä½œ
 	if(i<1 || i>L.length) return ERROR;
 	int* p=&(L.data[i-1]);
 	e=*p;
@@ -102,11 +102,11 @@ int ListDelete(SqList &L,int i,int &e){			//Ë³Ğò±íÉ¾³ı²Ù×÷
 	return OK;
 }
 
-int MergeList(LinkList &L1,LinkList &L2,LinkList &L3){		//Á´±íºÏ²¢
+int MergeList(LinkList &L1,LinkList &L2,LinkList &L3){	//é“¾è¡¨åˆå¹¶
 	LinkList p1=L1->next;
 	LinkList p2=L2->next;
 	LinkList p3=L3=L1;
-	while(p1&&p2){				//²åÈëÊı¾İ
+	while(p1&&p2){					//æ’å…¥æ•°æ®
 		if(p1->data<p2->data){
 			p3->next=p1;p3=p1;p1=p1->next;
 		}
@@ -114,12 +114,12 @@ int MergeList(LinkList &L1,LinkList &L2,LinkList &L3){		//Á´±íºÏ²¢
 			p3->next=p2;p3=p2;p2=p2->next;
 		}
 	}
-	p3->next=p1?p1:p2;			//²åÈëÊ£ÓàÊı¾İ
-	free(L2);					//ÊÍ·Å±íÍ·L2
+	p3->next=p1?p1:p2;			//æ’å…¥å‰©ä½™æ•°æ®
+	free(L2);				//é‡Šæ”¾è¡¨å¤´L2
 	return OK;
 }
 
-int MergeList(SqList &L1,SqList &L2,SqList &L3){			//Ë³Ğò±íºÏ²¢
+int MergeList(SqList &L1,SqList &L2,SqList &L3){//é¡ºåºè¡¨åˆå¹¶
 	int* p1=L1.data;
 	int* p2=L2.data;
 	L3.listsize=L3.length=L1.length+L2.length;
@@ -127,7 +127,7 @@ int MergeList(SqList &L1,SqList &L2,SqList &L3){			//Ë³Ğò±íºÏ²¢
 	if(!L3.data) exit(FALSE);
 	int* p1_last=L1.data+L1.length;
 	int* p2_last=L2.data+L2.length;
-	while(p1 < p1_last && p2 < p2_last){	//²åÈëÊı¾İ
+	while(p1 < p1_last && p2 < p2_last){	//æ’å…¥æ•°æ®
 		if(*p1<*p2){
 			*p3=*p1;
 			p3++;p1++;
@@ -137,18 +137,18 @@ int MergeList(SqList &L1,SqList &L2,SqList &L3){			//Ë³Ğò±íºÏ²¢
 			p3++;p2++;
 		}
 	}
-	while(p1<p1_last){		//²åÈëÊ£ÓàÊı¾İ
+	while(p1<p1_last){			//æ’å…¥å‰©ä½™æ•°æ®
 		*p3=*p1;
 		p3++;p1++;
 	}
-	while(p2<p2_last){		//²åÈëÊ£ÓàÊı¾İ
+	while(p2<p2_last){			//æ’å…¥å‰©ä½™æ•°æ®
 		*p3=*p2;
 		p3++;p2++;
 	}
 	return OK;
 }
 
-void ListDisplay(LinkList L){			//´òÓ¡Á´±í
+void ListDisplay(LinkList L){			//æ‰“å°é“¾è¡¨
 	LinkList p=L->next;
 	while(p){
 		printf("%d\t",p->data);
@@ -157,7 +157,7 @@ void ListDisplay(LinkList L){			//´òÓ¡Á´±í
 	printf("\n");
 }
 
-void ListDisplay(SqList L){				//´òÓ¡Ë³Ğò±í
+void ListDisplay(SqList L){			//æ‰“å°é¡ºåºè¡¨
 	int* p=L.data;
 	int* last=p+L.length;
 	while(p<last){
