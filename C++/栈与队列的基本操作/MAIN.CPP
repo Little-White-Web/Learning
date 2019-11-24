@@ -3,35 +3,35 @@
 using namespace std;
 
 int main(){
-	printf("Ë³ĞòÕ»²Ù×÷£º\n");
+	printf("é¡ºåºæ ˆæ“ä½œï¼š\n");
 	SqStack S;
-	InitStack(S);			//³õÊ¼»¯Ë³ĞòÕ»
+	InitStack(S);			//åˆå§‹åŒ–é¡ºåºæ ˆ
 	if(StackEmpty(S)){
-		printf("Õ»¿Õ£¡ÏÖÒÀ´Î²åÈë1µ½5£¡\n");
+		printf("æ ˆç©ºï¼ç°ä¾æ¬¡æ’å…¥1åˆ°5ï¼\n");
 		for(int i=1;i<=5;i++){
-			Push(S,i);			//Êı¾İÈëÕ»
+			Push(S,i);	//æ•°æ®å…¥æ ˆ
 		}
-		printf("²åÈëÖ®ºóµÄÊı¾İ£º");
+		printf("æ’å…¥ä¹‹åçš„æ•°æ®ï¼š");
 		for(i=1;i<=5;i++){
 			int e;
-			Pop(S,e);			//Êı¾İ³öÕ»²¢¼ÇÂ¼
+			Pop(S,e);	//æ•°æ®å‡ºæ ˆå¹¶è®°å½•
 			printf("%d\t",e);
 		}
 		printf("\n\n");
 	}
 
-	printf("µ¥¶ÓÁĞ²Ù×÷£º\n");
+	printf("å•é˜Ÿåˆ—æ“ä½œï¼š\n");
 	LinkQueue Q;
-	InitQueue(Q);			//³õÊ¼»¯µ¥¶ÓÁĞ
+	InitQueue(Q);			//åˆå§‹åŒ–å•é˜Ÿåˆ—
 	if(QueueEmpty(Q)){
-		printf("¶Ó¿Õ£¡ÏÖÒÀ´Î²åÈë1µ½5£¡\n");
+		printf("é˜Ÿç©ºï¼ç°ä¾æ¬¡æ’å…¥1åˆ°5ï¼\n");
 		for(int i=1;i<=5;i++){
-			EnQueue(Q,i);		//Êı¾İÈë¶Ó
+			EnQueue(Q,i);	//æ•°æ®å…¥é˜Ÿ
 		}
-		printf("²åÈëÖ®ºóµÄÊı¾İ£º");
+		printf("æ’å…¥ä¹‹åçš„æ•°æ®ï¼š");
 		for(i=1;i<=5;i++){
 			int e;
-			DeQueue(Q,e);		//Êı¾İ³ö¶Ó²¢¼ÇÂ¼
+			DeQueue(Q,e);	//æ•°æ®å‡ºé˜Ÿå¹¶è®°å½•
 			printf("%d\t",e);
 		}
 		printf("\n");
