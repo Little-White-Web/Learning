@@ -3,38 +3,38 @@
 #define ERROR 0
 #define FALSE 0
 
-typedef struct{						//Ë³Ğò±í
+typedef struct{				//é¡ºåºè¡¨
 	int* elem;
 	int length;
 }SSTable;
 
 int CreateSST(SSTable &T);
-int Search_Bin(SSTable T,int key);	//ÕÛ°ë²éÕÒ²Ù×÷
+int Search_Bin(SSTable T,int key);	//æŠ˜åŠæŸ¥æ‰¾æ“ä½œ
 
 //*****************************************************************
 
-typedef struct BiTNode{				//¶ş²æÊ÷
+typedef struct BiTNode{			//äºŒå‰æ ‘
 	int data;
 	BiTNode *lchild,*rchild;
 }BiTNode, *BiTree;
 
-int CreateBST(BiTree &T);			//¶ş²æÅÅĞòÊ÷²Ù×÷
+int CreateBST(BiTree &T);		//äºŒå‰æ’åºæ ‘æ“ä½œ
 BiTree SearchBST(BiTree T,int key);
 int Insert(BiTree &T,int data);
 
 //*****************************************************************
 
-typedef struct{						//¹şÏ£±íµÄÊı¾İ
-	int data;						//Êı¾İ
-	bool state;						//Êı¾İ×´Ì¬£¨ÓÃÒÔÅĞ¶ÏµØÖ·¿Õ¼äÊÇ·ñ´æÓĞÊı¾İ£©
+typedef struct{				//å“ˆå¸Œè¡¨çš„æ•°æ®
+	int data;			//æ•°æ®
+	bool state;			//æ•°æ®çŠ¶æ€ï¼ˆç”¨ä»¥åˆ¤æ–­åœ°å€ç©ºé—´æ˜¯å¦å­˜æœ‰æ•°æ®ï¼‰
 }HashData;
 
-typedef struct{						//¹şÏ£±í
+typedef struct{				//å“ˆå¸Œè¡¨
 	HashData* elem;
-	int count;						//µ±Ç°ÔªËØ¸öÊı
-	int size;						//µ±Ç°ÈİÁ¿£¨ÈİÁ¿>=ÔªËØ¸öÊı£©
+	int count;			//å½“å‰å…ƒç´ ä¸ªæ•°
+	int size;			//å½“å‰å®¹é‡ï¼ˆå®¹é‡>=å…ƒç´ ä¸ªæ•°ï¼‰
 }HashTable;
 
-int CreateHash(HashTable &T);		//¹şÏ£±í²Ù×÷
+int CreateHash(HashTable &T);		//å“ˆå¸Œè¡¨æ“ä½œ
 int SearchHash(HashTable T,int key);
 int NextAddr(HashTable T,int addr,int key);
