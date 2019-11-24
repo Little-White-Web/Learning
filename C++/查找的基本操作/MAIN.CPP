@@ -3,36 +3,36 @@
 using namespace std;
 
 int main(){
-	int key;						//¼üÖµ
-	printf("ÕÛ°ë²éÕÒ£º\n");
-	SSTable T1;						//¶¨ÒåË³Ğò±íT1
-	CreateSST(T1);					//¹¹ÔìT1
-	printf("ÊäÈëkeyÖµ£º");
-	scanf("%d",&key);				//ÊäÈëkeyÖµ
-	if(Search_Bin(T1,key)!=-1)		//ÕÛ°ë²éÕÒkey
-		printf("²éÕÒ³É¹¦£¡ÏÂ±êÎª%d\n",Search_Bin(T1,key)+1);
-	else printf("²éÕÒÊ§°Ü£¡\n");
+	int key;				//é”®å€¼
+	printf("æŠ˜åŠæŸ¥æ‰¾ï¼š\n");
+	SSTable T1;				//å®šä¹‰é¡ºåºè¡¨T1
+	CreateSST(T1);				//æ„é€ T1
+	printf("è¾“å…¥keyå€¼ï¼š");
+	scanf("%d",&key);			//è¾“å…¥keyå€¼
+	if(Search_Bin(T1,key)!=-1)		//æŠ˜åŠæŸ¥æ‰¾key
+		printf("æŸ¥æ‰¾æˆåŠŸï¼ä¸‹æ ‡ä¸º%d\n",Search_Bin(T1,key)+1);
+	else printf("æŸ¥æ‰¾å¤±è´¥ï¼\n");
 
 	printf("\n*************************************************\n\n");
 
-	printf("¶ş²æÅÅĞòÊ÷£º\n");
-	BiTree T2=NULL;					//¶¨Òå¶ş²æÊ÷T2,²¢³õÊ¼»¯NULL£¨²»³õÊ¼»¯½«Òì³££¬ÕâÊÇ¸ö¾Ş¿Ó£¬ËäÈ»ÊÇµÍ¼¶´íÎó£©
-	CreateBST(T2);					//¹¹ÔìT2
-	printf("ÊäÈëkeyÖµ£º");
-	scanf("%d",&key);				//ÊäÈëkeyÖµ
-	if(SearchBST(T2,key))			//ÔÚÅÅĞòÊ÷ÖĞ²éÕÒkey
-		printf("²éÕÒ³É¹¦£¡µØÖ·Îª%p\n",SearchBST(T2,key));
-	else printf("²éÕÒÊ§°Ü£¡\n");
+	printf("äºŒå‰æ’åºæ ‘ï¼š\n");
+	BiTree T2=NULL;				//å®šä¹‰äºŒå‰æ ‘T2,å¹¶åˆå§‹åŒ–NULLï¼ˆä¸åˆå§‹åŒ–å°†å¼‚å¸¸ï¼Œè¿™æ˜¯ä¸ªå·¨å‘ï¼Œè™½ç„¶æ˜¯ä½çº§é”™è¯¯ï¼‰
+	CreateBST(T2);				//æ„é€ T2
+	printf("è¾“å…¥keyå€¼ï¼š");
+	scanf("%d",&key);			//è¾“å…¥keyå€¼
+	if(SearchBST(T2,key))			//åœ¨æ’åºæ ‘ä¸­æŸ¥æ‰¾key
+		printf("æŸ¥æ‰¾æˆåŠŸï¼åœ°å€ä¸º%p\n",SearchBST(T2,key));
+	else printf("æŸ¥æ‰¾å¤±è´¥ï¼\n");
 
 	printf("\n*************************************************\n\n");
 
-	printf("¹şÏ£±í£º\n");
-	HashTable T3;					//¶¨Òå¹şÏ£±íT3
-	CreateHash(T3);					//¹¹ÔìT3
-	printf("ÊäÈëkeyÖµ£º");
-	scanf("%d",&key);				//ÊäÈëkeyÖµ
-	if(SearchHash(T3,key)!=-1)		//ÔÚ¹şÏ£±íÖĞ²éÕÒkey
-		printf("²éÕÒ³É¹¦£¡ÏÂ±êÎª%d\n\n",SearchHash(T3,key)+1);
-	else printf("²éÕÒÊ§°Ü£¡\n\n");
+	printf("å“ˆå¸Œè¡¨ï¼š\n");
+	HashTable T3;				//å®šä¹‰å“ˆå¸Œè¡¨T3
+	CreateHash(T3);				//æ„é€ T3
+	printf("è¾“å…¥keyå€¼ï¼š");
+	scanf("%d",&key);			//è¾“å…¥keyå€¼
+	if(SearchHash(T3,key)!=-1)		//åœ¨å“ˆå¸Œè¡¨ä¸­æŸ¥æ‰¾key
+		printf("æŸ¥æ‰¾æˆåŠŸï¼ä¸‹æ ‡ä¸º%d\n\n",SearchHash(T3,key)+1);
+	else printf("æŸ¥æ‰¾å¤±è´¥ï¼\n\n");
 	return OK;
 }
