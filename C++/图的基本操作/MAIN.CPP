@@ -3,27 +3,27 @@
 using namespace std;
 
 int main(){
-	bool visited[10];			//È«¾Ö±äÁ¿£¬·ÃÎÊ±êÖ¾
+	bool visited[10];		//å…¨å±€å˜é‡ï¼Œè®¿é—®æ ‡å¿—
 
-	printf("Í¼µÄÁÚ½Ó¾ØÕó´æ´¢£º\n");
-	MGraph G1;					//¶¨ÒåG1
-	printf("´´½¨Ò»¸öÓĞÏòÍø£¡\n");
-	CreateDN(G1);				//¹¹ÔìG1
-	printf("Éî¶ÈÓÅÏÈ±éÀú£º\n");
-	DFSTraverse(G1,visited,display);	//Éî¶ÈÓÅÏÈ±éÀú
-	printf("\n¹ã¶ÈÓÅÏÈ±éÀú£º\n");
-	BFSTraverse(G1,visited,display);	//¹ã¶ÈÓÅÏÈ±éÀú
+	printf("å›¾çš„é‚»æ¥çŸ©é˜µå­˜å‚¨ï¼š\n");
+	MGraph G1;			//å®šä¹‰G1
+	printf("åˆ›å»ºä¸€ä¸ªæœ‰å‘ç½‘ï¼\n");
+	CreateDN(G1);			//æ„é€ G1
+	printf("æ·±åº¦ä¼˜å…ˆéå†ï¼š\n");
+	DFSTraverse(G1,visited,display);//æ·±åº¦ä¼˜å…ˆéå†
+	printf("\nå¹¿åº¦ä¼˜å…ˆéå†ï¼š\n");
+	BFSTraverse(G1,visited,display);//å¹¿åº¦ä¼˜å…ˆéå†
 
 	printf("\n\n*********************************************************\n\n");
 
-	printf("Í¼µÄÁÚ½Ó±í´æ´¢£º\n");
-	LGraph G2;					//¶¨ÒåG2
-	printf("´´½¨Ò»¸öÓĞÏòÍø£¡\n");
-	CreateDN(G2);				//¹¹ÔìG2
-	printf("Éî¶ÈÓÅÏÈ±éÀú£º\n");
-	DFSTraverse(G2,visited,display);	//Éî¶ÈÓÅÏÈ±éÀú
-	printf("\n¹ã¶ÈÓÅÏÈ±éÀú£º\n");
-	BFSTraverse(G2,visited,display);	//¹ã¶ÈÓÅÏÈ±éÀú
+	printf("å›¾çš„é‚»æ¥è¡¨å­˜å‚¨ï¼š\n");
+	LGraph G2;			//å®šä¹‰G2
+	printf("åˆ›å»ºä¸€ä¸ªæœ‰å‘ç½‘ï¼\n");
+	CreateDN(G2);			//æ„é€ G2
+	printf("æ·±åº¦ä¼˜å…ˆéå†ï¼š\n");
+	DFSTraverse(G2,visited,display);//æ·±åº¦ä¼˜å…ˆéå†
+	printf("\nå¹¿åº¦ä¼˜å…ˆéå†ï¼š\n");
+	BFSTraverse(G2,visited,display);//å¹¿åº¦ä¼˜å…ˆéå†
 	printf("\n");
 	return OK;
 }
