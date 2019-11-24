@@ -2,7 +2,7 @@
 #include "Polyn.h"
 using namespace std;
 
-int CreatPolyn(List &P){						//´´½¨¶àÏîÊ½£¨³õÊ¼»¯£©
+int CreatPolyn(List &P){				//åˆ›å»ºå¤šé¡¹å¼ï¼ˆåˆå§‹åŒ–ï¼‰
 	P=(List)malloc(sizeof(Polyn));
 	if(!P) exit(FALSE);
 	P->next=NULL;
@@ -12,58 +12,58 @@ int CreatPolyn(List &P){						//´´½¨¶àÏîÊ½£¨³õÊ¼»¯£©
 	q=P;
 
 	int m;
-	printf("ÇëÊäÈë¶àÏîÊ½µÄÏîÊı£º");
+	printf("è¯·è¾“å…¥å¤šé¡¹å¼çš„é¡¹æ•°ï¼š");
 	scanf("%d",&m);
 	for(int i=1;i<=m;i++){
 		List s;
 		s=(List)malloc(sizeof(Polyn));
 		if(!s) exit(FALSE);
 		s->next=NULL;
-		printf("ÇëÊäÈëµÚ%dÏîµÄÏµÊıÓëÖ¸Êı£º",i);
+		printf("è¯·è¾“å…¥ç¬¬%dé¡¹çš„ç³»æ•°ä¸æŒ‡æ•°ï¼š",i);
 		scanf("%f,%d",&s->coef,&s->expn);
 		q->next=s;
 		q=s;
 	}
-	printf("\n");								//»»ĞĞ£¬ÎªÁËÊäÈëÊ±£¬½çÃæÖ±¹Û¡¢²»»ìÂÒ
+	printf("\n");					//æ¢è¡Œï¼Œä¸ºäº†è¾“å…¥æ—¶ï¼Œç•Œé¢ç›´è§‚ã€ä¸æ··ä¹±
 	return OK;
 }
 
-int AddPolyn(List &A,List &B,List &C){			//¶àÏîÊ½Ïà¼Ó
+int AddPolyn(List &A,List &B,List &C){			//å¤šé¡¹å¼ç›¸åŠ 
 	List pa,pb,pc;
 	pa=A->next;pb=B->next;pc=C;
 	while(pa&&pb){
-		if(pa->expn<pb->expn){					//±íAÖ¸ÊıĞ¡£¬½«Æä²åÈëºÍ¶àÏîÊ½µÄÄ©Î²
+		if(pa->expn<pb->expn){			//è¡¨AæŒ‡æ•°å°ï¼Œå°†å…¶æ’å…¥å’Œå¤šé¡¹å¼çš„æœ«å°¾
 			pc->next=pa;pc=pa;pa=pa->next;
 		}
-		else if(pa->expn>pb->expn){				//±íBÖ¸ÊıĞ¡£¬½«Æä²åÈëºÍ¶àÏîÊ½µÄÄ©Î²
+		else if(pa->expn>pb->expn){		//è¡¨BæŒ‡æ•°å°ï¼Œå°†å…¶æ’å…¥å’Œå¤šé¡¹å¼çš„æœ«å°¾
 			pc->next=pb;pc=pb;pb=pb->next;
 		}
-		else{									//Ö¸ÊıÏàµÈ£¬ÏµÊıÏà¼Ó²¢²åÈë»òÉ¾³ıÁ½½Úµã
+		else{					//æŒ‡æ•°ç›¸ç­‰ï¼Œç³»æ•°ç›¸åŠ å¹¶æ’å…¥æˆ–åˆ é™¤ä¸¤èŠ‚ç‚¹
 			float sum=pa->coef + pb->coef;
 			if(sum){
 				pa->coef=sum;pc->next=pa;
 				pc=pa;
 				pa=pa->next;
-				List b;b=pb;					//ÁÙÊ±Ö¸ÕëbÖ¸Ïò¶àÓà½Úµã
+				List b;b=pb;		//ä¸´æ—¶æŒ‡é’ˆbæŒ‡å‘å¤šä½™èŠ‚ç‚¹
 				pb=pb->next;
-				free(b);						//ÊÍ·Å¶àÓà½Úµã
+				free(b);		//é‡Šæ”¾å¤šä½™èŠ‚ç‚¹
 			}
 			else{
-				List a,b;a=pa;b=pb;				//ÁÙÊ±Ö¸Õë±äÁ¿a£¬bÖ¸ÏòÒªÉ¾³ıµÄ½Úµã
+				List a,b;a=pa;b=pb;	//ä¸´æ—¶æŒ‡é’ˆå˜é‡aï¼ŒbæŒ‡å‘è¦åˆ é™¤çš„èŠ‚ç‚¹
 				pa=pa->next;pb=pb->next;
-				free(a);free(b);				//ÊÍ·ÅÁ½¸öÏµÊıºÍÎª0µÄ½Úµã
+				free(a);free(b);	//é‡Šæ”¾ä¸¤ä¸ªç³»æ•°å’Œä¸º0çš„èŠ‚ç‚¹
 			}
 		}
 	}
-	pc->next=pa?pa:pb;							//²åÈëÊ£ÓàÊı¾İ
-	free(A);free(B);							//ÊÍ·Å±íÍ·A¡¢B
+	pc->next=pa?pa:pb;				//æ’å…¥å‰©ä½™æ•°æ®
+	free(A);free(B);				//é‡Šæ”¾è¡¨å¤´Aã€B
 	return OK;
 }
 
-void PrintPolyn(List P){						//´òÓ¡¶àÏîÊ½
+void PrintPolyn(List P){				//æ‰“å°å¤šé¡¹å¼
 	List q;q=P->next;
 	if(q){
-		printf("P(X) = %.2fX^%d",q->coef,q->expn);	//´òÓ¡µÚÒ»Ïî
+		printf("P(X) = %.2fX^%d",q->coef,q->expn);//æ‰“å°ç¬¬ä¸€é¡¹
 		q=q->next;
 	}
 	else printf("P(X) = 0");
@@ -71,5 +71,5 @@ void PrintPolyn(List P){						//´òÓ¡¶àÏîÊ½
 		printf(" + %.2fX^%d",q->coef,q->expn);
 		q=q->next;
 	}
-	printf("\n\n");								//»»ĞĞ£¬ÎªÁËÊä³öÊ±£¬½çÃæÖ±¹Û¡¢²»»ìÂÒ
+	printf("\n\n");					//æ¢è¡Œï¼Œä¸ºäº†è¾“å‡ºæ—¶ï¼Œç•Œé¢ç›´è§‚ã€ä¸æ··ä¹±
 }
