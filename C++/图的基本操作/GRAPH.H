@@ -2,22 +2,22 @@
 #define OK 1
 #define ERROR 0
 #define FALSE 0
-#define INFINITY INT_MAX    //×î´óÖµ(ÓÃÀ´´ú±íÎŞÇî´ó)
-#define MAX_VERTEX_NUM 20	//×î´ó¶¥µãÊı
-typedef enum { DG,DN,UDG,UDN } GraphKind;	//{ÓĞÏòÍ¼£¬ÓĞÏòÍø£¬ÎŞÏòÍ¼£¬ÎŞÏòÍø}
+#define INFINITY INT_MAX    		//æœ€å¤§å€¼(ç”¨æ¥ä»£è¡¨æ— ç©·å¤§)
+#define MAX_VERTEX_NUM 20		//æœ€å¤§é¡¶ç‚¹æ•°
+typedef enum { DG,DN,UDG,UDN } GraphKind;//{æœ‰å‘å›¾ï¼Œæœ‰å‘ç½‘ï¼Œæ— å‘å›¾ï¼Œæ— å‘ç½‘}
 
-typedef struct ArcCell{						//»¡£¨±ß£©µÄ¶¨Òå
-	int adj;								//È¨Öµ
-	char* info;								//»¡Ïà¹ØĞÅÏ¢µÄÖ¸Õë
+typedef struct ArcCell{			//å¼§ï¼ˆè¾¹ï¼‰çš„å®šä¹‰
+	int adj;			//æƒå€¼
+	char* info;			//å¼§ç›¸å…³ä¿¡æ¯çš„æŒ‡é’ˆ
 }ArcCell, AdjMatrix[MAX_VERTEX_NUM][MAX_VERTEX_NUM];
-typedef struct{								//Í¼µÄÁÚ½Ó¾ØÕó´æ´¢±íÊ¾
-	char vexs[MAX_VERTEX_NUM];				//¶¥µãÏòÁ¿
-	AdjMatrix arcs;							//ÁÚ½Ó¾ØÕó
-	int vexnum,arcnum;						//¶¥µãÊı£¬»¡Êı
-	GraphKind kind;							//Í¼µÄÖÖÀà
+typedef struct{				//å›¾çš„é‚»æ¥çŸ©é˜µå­˜å‚¨è¡¨ç¤º
+	char vexs[MAX_VERTEX_NUM];	//é¡¶ç‚¹å‘é‡
+	AdjMatrix arcs;			//é‚»æ¥çŸ©é˜µ
+	int vexnum,arcnum;		//é¡¶ç‚¹æ•°ï¼Œå¼§æ•°
+	GraphKind kind;			//å›¾çš„ç§ç±»
 }MGraph;
 
-int CreateUDN(MGraph &G);					//ÁÚ½Ó¾ØÕó²Ù×÷
+int CreateUDN(MGraph &G);		//é‚»æ¥çŸ©é˜µæ“ä½œ
 int CreateDN(MGraph &G);
 int LocateVex(MGraph G,char v);
 int display(MGraph G,int v);
@@ -27,22 +27,22 @@ int BFSTraverse(MGraph G,bool visited[],int (*Visit)(MGraph G,int v));
 
 //********************************************************************
 
-typedef struct ArcNode{			//»¡¶¨Òå
-	int adjvex;					//¸Ã»¡Ö¸ÏòµÄ¶¥µã
-	struct ArcNode* nextarc;	//Ö¸ÏòÏÂÒ»Ìõ»¡µÄÖ¸Õë
-	char* info;					//»¡Ïà¹ØĞÅÏ¢µÄÖ¸Õë
+typedef struct ArcNode{			//å¼§å®šä¹‰
+	int adjvex;			//è¯¥å¼§æŒ‡å‘çš„é¡¶ç‚¹
+	struct ArcNode* nextarc;	//æŒ‡å‘ä¸‹ä¸€æ¡å¼§çš„æŒ‡é’ˆ
+	char* info;			//å¼§ç›¸å…³ä¿¡æ¯çš„æŒ‡é’ˆ
 }ArcNode;
-typedef struct VNode{			//¶¥µã¶¨Òå
-	char data;					//¶¥µãĞÅÏ¢
-	ArcNode* firstarc;			//Ö¸ÏòµÚÒ»Ìõ»¡µÄÖ¸Õë
+typedef struct VNode{			//é¡¶ç‚¹å®šä¹‰
+	char data;			//é¡¶ç‚¹ä¿¡æ¯
+	ArcNode* firstarc;		//æŒ‡å‘ç¬¬ä¸€æ¡å¼§çš„æŒ‡é’ˆ
 }VNode, AdjList[MAX_VERTEX_NUM];
-typedef struct{					//Í¼µÄÁÚ½Ó±í´æ´¢±íÊ¾
+typedef struct{				//å›¾çš„é‚»æ¥è¡¨å­˜å‚¨è¡¨ç¤º
 	AdjList vertices;
-	int vexnum,arcnum;			//¶¥µãÊı£¬»¡Êı
-	GraphKind kind;				//Í¼µÄÖÖÀà
+	int vexnum,arcnum;		//é¡¶ç‚¹æ•°ï¼Œå¼§æ•°
+	GraphKind kind;			//å›¾çš„ç§ç±»
 }LGraph;
 
-int CreateDN(LGraph &G);		//ÁÚ½Ó±í²Ù×÷
+int CreateDN(LGraph &G);		//é‚»æ¥è¡¨æ“ä½œ
 int LocateVex(LGraph G,char v);
 int FirstAdjVex(LGraph G,int v);
 int NextAdjVex(LGraph G,int v,int w);
