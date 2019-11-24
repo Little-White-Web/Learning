@@ -3,22 +3,22 @@
 #define OK 1
 #define ERROR -1
 
-typedef struct{			//Ë³ĞòÕ»½á¹¹
+typedef struct{			//é¡ºåºæ ˆç»“æ„
 	int* base;
 	int* top;
 	int stacksize;
 }SqStack;
 
-typedef struct QNode{		//µ¥Á´¶ÓÁĞ½á¹¹
+typedef struct QNode{		//å•é“¾é˜Ÿåˆ—ç»“æ„
 	int data;
 	struct QNode* next;
 }QNode;
-typedef struct{				//¶ÓÍ·¡¢¶ÓÎ²Ö¸Õë½á¹¹
+typedef struct{			//é˜Ÿå¤´ã€é˜Ÿå°¾æŒ‡é’ˆç»“æ„
 	QNode* front;
 	QNode* rear;
 }LinkQueue;
 
-int InitStack(SqStack &S);		//Õ»Óë¶ÓÁĞµÄ»ù±¾²Ù×÷
+int InitStack(SqStack &S);	//æ ˆä¸é˜Ÿåˆ—çš„åŸºæœ¬æ“ä½œ
 int InitQueue(LinkQueue &Q);
 
 int StackEmpty(SqStack S);
