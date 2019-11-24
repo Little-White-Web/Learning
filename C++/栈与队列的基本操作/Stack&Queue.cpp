@@ -2,7 +2,7 @@
 #include "Stack&Queue.h"
 using namespace std;
 
-int InitStack(SqStack &S){			//¹¹Ôì¿ÕÕ»
+int InitStack(SqStack &S){		//æ„é€ ç©ºæ ˆ
 	S.base=(int*)malloc(100*sizeof(int));
 	if(!S.base) exit(FALSE);
 	S.top=S.base;
@@ -10,30 +10,30 @@ int InitStack(SqStack &S){			//¹¹Ôì¿ÕÕ»
 	return OK;
 }
 
-int InitQueue(LinkQueue &Q){		//¹¹Ôì¿Õ¶ÓÁĞ
+int InitQueue(LinkQueue &Q){		//æ„é€ ç©ºé˜Ÿåˆ—
 	Q.front=Q.rear=(QNode*)malloc(sizeof(QNode));
 	if(!Q.front) exit(FALSE);
 	Q.front->next=NULL;
 	return OK;
 }
 
-int StackEmpty(SqStack S){			//Õ»ÅĞ¿Õ
+int StackEmpty(SqStack S){		//æ ˆåˆ¤ç©º
 	if(S.top==S.base) return TRUE;
 	else return FALSE;
 }
 
-int QueueEmpty(LinkQueue Q){		//¶ÓÁĞÅĞ¿Õ
+int QueueEmpty(LinkQueue Q){		//é˜Ÿåˆ—åˆ¤ç©º
 	if(Q.rear==Q.front) return TRUE;
 	else return FALSE;
 }
 
-int Pop(SqStack &S,int &e){			//³öÕ»
+int Pop(SqStack &S,int &e){		//å‡ºæ ˆ
 	if(S.top==S.base) return ERROR;
 	e=*--S.top;
 	return OK;
 }
 
-int DeQueue(LinkQueue &Q,int &e){	//³ö¶Ó
+int DeQueue(LinkQueue &Q,int &e){	//å‡ºé˜Ÿ
 	if(Q.front==Q.rear) return ERROR;
 	QNode* p=Q.front->next;
 	e=p->data;
@@ -43,8 +43,8 @@ int DeQueue(LinkQueue &Q,int &e){	//³ö¶Ó
 	return OK;
 }
 
-int Push(SqStack &S,int &e){		//ÈëÕ»
-	if(S.top-S.base>=S.stacksize){	//Õ»Âú£¬×·¼Ó¿Õ¼ä
+int Push(SqStack &S,int &e){		//å…¥æ ˆ
+	if(S.top-S.base>=S.stacksize){	//æ ˆæ»¡ï¼Œè¿½åŠ ç©ºé—´
 		S.base=(int*)realloc(S.base,(S.stacksize+10)*sizeof(int));
 		if(!S.base) exit(FALSE);
 		S.top=S.base+S.stacksize;
@@ -54,7 +54,7 @@ int Push(SqStack &S,int &e){		//ÈëÕ»
 	return OK;
 }
 
-int EnQueue(LinkQueue &Q,int &e){	//Èë¶Ó
+int EnQueue(LinkQueue &Q,int &e){	//å…¥é˜Ÿ
 	QNode* p=(QNode*)malloc(sizeof(QNode));
 	if(!p) exit(FALSE);
 	p->data=e;
