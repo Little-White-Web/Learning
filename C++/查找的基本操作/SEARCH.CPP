@@ -74,14 +74,14 @@ int CreateHash(HashTable &T){				//创建哈希表
 	T.elem=(HashData*)malloc(T.size*sizeof(HashData));//分配空间给表T
 	T.count=0;					//初始元素个数为0
 	for(int i=0;i<T.size;i++){
-		T.elem[i].data=0;
+		T.elem[i].data=INT_MAX;
 		T.elem[i].state=false;			//初始化所有单元的状态为无值
 	}
 	printf("依次输入数据（-1结束）：\n");
 	while(T.count<T.size){
 		int data;scanf("%d",&data);		//输入数据
 		if(data==-1) return OK;			//若输入-1，结束输入
-		int addr=data%T.size;			//Hash地址
+		int addr=abs(data)%T.size;		//Hash地址
 		while(T.elem[addr].state){		//若地址冲突
 			addr++;				//地址加一
 			if(addr>T.size-1) addr=0;	//若新地址超出表容量，则从0号单元重新找
@@ -94,7 +94,7 @@ int CreateHash(HashTable &T){				//创建哈希表
 }
 
 int SearchHash(HashTable T,int key){			//哈希查找
-	int addr=key%T.size;
+	int addr=abs(key)%T.size;
 	if(key==T.elem[addr].data) return addr;		//查找匹配，返回地址
 	addr=NextAddr(T,addr,key);			//不匹配，调用递归查找
 	return addr;					//返回最终地址，不一定匹配
