@@ -3,51 +3,51 @@
 using namespace std;
 
 int Partition(int *L,int low,int high){
-	L[0]=L[low];									//ÓÃµÚÒ»¸ö¼ÇÂ¼×÷ÊàÖá¼ÇÂ¼
-	int pivotkey=L[low];							//ÊàÖá
-	while(low<high){								//´Ó±íÁ½¶Ë½»ÌæÏòÖĞ¼äÉ¨Ãè
+	L[0]=L[low];						//ç”¨ç¬¬ä¸€ä¸ªè®°å½•ä½œæ¢è½´è®°å½•
+	int pivotkey=L[low];					//æ¢è½´
+	while(low<high){					//ä»è¡¨ä¸¤ç«¯äº¤æ›¿å‘ä¸­é—´æ‰«æ
 		while(low<high && L[high]>=pivotkey) --high;
-		L[low]=L[high];								//½«±ÈÊàÖáĞ¡µÄÒÆµ½µÍ¶Ë
+		L[low]=L[high];					//å°†æ¯”æ¢è½´å°çš„ç§»åˆ°ä½ç«¯
 		while(low<high && L[low]<=pivotkey) ++low;
-		L[high]=L[low];								//½«±ÈÊàÖá´óµÄÒÆµ½¸ß¶Ë
+		L[high]=L[low];					//å°†æ¯”æ¢è½´å¤§çš„ç§»åˆ°é«˜ç«¯
 	}
-	L[low]=L[0];									//ÊàÖá¼ÇÂ¼µ½Î»
-	return low;										//·µ»ØÊàÖáÎ»ÖÃ
+	L[low]=L[0];						//æ¢è½´è®°å½•åˆ°ä½
+	return low;						//è¿”å›æ¢è½´ä½ç½®
 }
 
-void QuickSort(int *L,int low,int high){			//¿ìËÙÅÅĞò
-	if(low<high){									//³¤¶È´óÓÚ1
-		int pivotloc=Partition(L,low,high);			//½«L·ÖÎªÁ½°ë£¬²¢»ñµÃÊàÖáÎ»ÖÃ
-		QuickSort(L,low,pivotloc-1);				//¶ÔµÍ×Ó±íµİ¹éÅÅĞò
-		QuickSort(L,pivotloc+1,high);				//¶Ô¸ß×Ó±íµİ¹éÅÅĞò
+void QuickSort(int *L,int low,int high){			//å¿«é€Ÿæ’åº
+	if(low<high){						//é•¿åº¦å¤§äº1
+		int pivotloc=Partition(L,low,high);		//å°†Låˆ†ä¸ºä¸¤åŠï¼Œå¹¶è·å¾—æ¢è½´ä½ç½®
+		QuickSort(L,low,pivotloc-1);			//å¯¹ä½å­è¡¨é€’å½’æ’åº
+		QuickSort(L,pivotloc+1,high);			//å¯¹é«˜å­è¡¨é€’å½’æ’åº
 	}
 }
 
-void HeapAdjust(int *L,int s,int m){				//µ÷ÕûÊı¾İÊ¹Ö®³ÉÎª´ó¶¥¶Ñ
-	int lchild=2*s;									//×óº¢×Ó
-	int rchild=2*s+1;								//ÓÒº¢×Ó
-	int max=s;										//×î´óÕß
+void HeapAdjust(int *L,int s,int m){				//è°ƒæ•´æ•°æ®ä½¿ä¹‹æˆä¸ºå¤§é¡¶å †
+	int lchild=2*s;						//å·¦å­©å­
+	int rchild=2*s+1;					//å³å­©å­
+	int max=s;						//æœ€å¤§è€…
 	if(s<=m){
 		if(lchild<=m && L[lchild]>L[max])
-			max=lchild;								//Èô×óº¢×Ó´óÓÚ×î´óÕß£¬ÔòÌæ»»×î´óÕß
+			max=lchild;				//è‹¥å·¦å­©å­å¤§äºæœ€å¤§è€…ï¼Œåˆ™æ›¿æ¢æœ€å¤§è€…
 		if(rchild<=m && L[rchild]>L[max])
-			max=rchild;								//ÓÒº¢×ÓÍ¬Àí
-		if(s!=max){									//Èô¸ù½Úµã²»ÊÇ×î´óÕß
-			L[0]=L[s];								//ÔòÒÔ0ºÅµ¥ÔªÎªÖĞ¼äÖµ£¬½»»»¸ù½ÚµãÓë×î´óÕß
+			max=rchild;				//å³å­©å­åŒç†
+		if(s!=max){					//è‹¥æ ¹èŠ‚ç‚¹ä¸æ˜¯æœ€å¤§è€…
+			L[0]=L[s];				//åˆ™ä»¥0å·å•å…ƒä¸ºä¸­é—´å€¼ï¼Œäº¤æ¢æ ¹èŠ‚ç‚¹ä¸æœ€å¤§è€…
 			L[s]=L[max];
 			L[max]=L[0];
-			HeapAdjust(L,max,m);					//µİ¹éµ÷Õû
+			HeapAdjust(L,max,m);			//é€’å½’è°ƒæ•´
 		}
 	}
 }
 
-void HeapSort(int *L,int n){						//¶ÑÅÅĞò
+void HeapSort(int *L,int n){					//å †æ’åº
 	for(int i=n-1;i>0;--i)
-		HeapAdjust(L,i,n);							//°ÑL[1...L.length]½¨³É´ó¶¥¶Ñ
+		HeapAdjust(L,i,n);				//æŠŠL[1...L.length]å»ºæˆå¤§é¡¶å †
 	for(i=n-1;i>1;--i){
-		L[0]=L[1];									//½»»»¶Ñ¶¥Óë×îºóÒ»¸öÔªËØ£¬0ºÅµ¥Ôª×÷ÖĞ¼äÖµ
+		L[0]=L[1];					//äº¤æ¢å †é¡¶ä¸æœ€åä¸€ä¸ªå…ƒç´ ï¼Œ0å·å•å…ƒä½œä¸­é—´å€¼
 		L[1]=L[i];
 		L[i]=L[0];
-		HeapAdjust(L,1,i-1);						//ÖØĞÂµ÷Õû´ó¶¥¶Ñ
+		HeapAdjust(L,1,i-1);				//é‡æ–°è°ƒæ•´å¤§é¡¶å †
 	}
 }
