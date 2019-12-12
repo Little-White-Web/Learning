@@ -18,10 +18,18 @@ int CreateSST(SSTable &T){				//创建有序表
 int Search_Bin(SSTable T,int key){			//折半查找
 	int low=0,high=T.length-1;			//查找区间
 	while(low<=high){
-		int mid=(low+high)/2;			//区间的中点
-		if(key==T.elem[mid]) return mid;	//找到结果，返回其下标
-		else if(key<T.elem[mid]) high=mid-1;	//在前半区间查找
-		else low=mid+1;				//在后半区间查找
+		if(T.elem[low]<=T.elem[high]){                  //对升序数据排序
+                        int mid=(low+high)/2;			//区间的中点
+		        if(key==T.elem[mid]) return mid;	//找到结果，返回其下标
+		        else if(key<T.elem[mid]) high=mid-1;	//在前半区间查找
+		        else low=mid+1;				//在后半区间查找
+                }
+                else{                                           //对降序数据排序
+                        int mid=(low+high)/2;			//区间的中点
+		        if(key==T.elem[mid]) return mid;	//找到结果，返回其下标
+		        else if(key>T.elem[mid]) high=mid-1;	//在前半区间查找
+		        else low=mid+1;				//在后半区间查找
+                }
 	}
 	return -1;					//查无此元素，返回-1
 }
